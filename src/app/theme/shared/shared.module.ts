@@ -14,9 +14,12 @@ import 'mousetrap';
 
 // bootstrap import
 import { NgbDropdownModule, NgbNavModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableHeaderComponent } from './components/table-header-component/table-header-component';
+import { CurrencyMaskModule } from "ngx-currency";
 
 @NgModule({
   imports: [
+    TableHeaderComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -25,7 +28,8 @@ import { NgbDropdownModule, NgbNavModule, NgbModule } from '@ng-bootstrap/ng-boo
     NgbDropdownModule,
     NgbNavModule,
     NgbModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    CurrencyMaskModule
   ],
   exports: [
     CommonModule,
@@ -36,7 +40,8 @@ import { NgbDropdownModule, NgbNavModule, NgbModule } from '@ng-bootstrap/ng-boo
     NgbModule,
     NgbDropdownModule,
     NgbNavModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    TableHeaderComponent
   ],
   declarations: []
 })

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OrcamentosRoutingModule } from './orcamentos-routing-module';
 import { Orcamentos } from './orcamentos';
+import { MatCardModule } from "@angular/material/card";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { Orcamentos } from './orcamentos';
   ],
   imports: [
     CommonModule,
-    OrcamentosRoutingModule
-  ]
+    OrcamentosRoutingModule,
+    MatCardModule
+]
 })
 export class OrcamentosModule { }
