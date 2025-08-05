@@ -328,12 +328,12 @@
   optionalDependencies:
     lmdb "3.4.1"
 
-"@angular/cdk@>=19.0.0", "@angular/cdk@20.0.4":
-  version "20.0.4"
-  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-20.0.4.tgz"
-  integrity sha512-NCUuw0qQXwawLsT14JHApNB9or3XGs7D1pWXlOIix/fKqzHVfi4un9xHmpjH2Q1uCiwonuak7fDof8B+IXhbug==
+"@angular/cdk@^20.1.4", "@angular/cdk@>=19.0.0", "@angular/cdk@20.1.4":
+  version "20.1.4"
+  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-20.1.4.tgz"
+  integrity sha512-Uz0fLZRWpKG7xniXSw3Hr4QEvTlVurov07BBz6nRWseGxeHCDkFqKc3UEriovCQ7ylJdR6miIu7j+h4PWLH48g==
   dependencies:
-    parse5 "^7.1.2"
+    parse5 "^8.0.0"
     tslib "^2.3.0"
 
 "@angular/cli@20.1.4":
@@ -396,7 +396,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^20.0.0", "@angular/forms@20.1.4":
+"@angular/forms@^20.0.0", "@angular/forms@^20.0.0 || ^21.0.0", "@angular/forms@20.1.4":
   version "20.1.4"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-20.1.4.tgz"
   integrity sha512-5gUwcV+JpzJ2rSPo1nR6iNz2Dm3iRcVCvRTsVnKhFbZCIbGLihLpoCuittsgUY/C9wh/rnmXlatmLJ7giSuUZA==
@@ -413,6 +413,13 @@
     tinyglobby "^0.2.12"
     yargs "^18.0.0"
 
+"@angular/material@^20.1.4":
+  version "20.1.4"
+  resolved "https://registry.npmjs.org/@angular/material/-/material-20.1.4.tgz"
+  integrity sha512-V+EyzKwgqzUIAwXpr8chSMN0nKw+FEs5A/WgC2+CuW7T/FCFp6BW7Am2H51gR8onlqjLpduxyx8HLTifQ0hS6A==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/platform-browser-dynamic@20.1.4":
   version "20.1.4"
   resolved "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-20.1.4.tgz"
@@ -420,7 +427,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^20.0.0", "@angular/platform-browser@20.1.4":
+"@angular/platform-browser@^20.0.0", "@angular/platform-browser@^20.0.0 || ^21.0.0", "@angular/platform-browser@20.1.4":
   version "20.1.4"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-20.1.4.tgz"
   integrity sha512-z86NsGSwm5pXCACdWBbp7SC1Xn+UGvuoRqTsi0dNUXT/3WrP6MvZT3TfNKwM63GLUqFAICSt7uFXS84D72ukvA==
@@ -5303,10 +5310,17 @@ parse5-sax-parser@^7.0.0:
   dependencies:
     parse5 "^7.0.0"
 
-parse5@^7.0.0, parse5@^7.1.2:
+parse5@^7.0.0:
   version "7.3.0"
   resolved "https://registry.npmjs.org/parse5/-/parse5-7.3.0.tgz"
   integrity sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==
+  dependencies:
+    entities "^6.0.0"
+
+parse5@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.npmjs.org/parse5/-/parse5-8.0.0.tgz"
+  integrity sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==
   dependencies:
     entities "^6.0.0"
 
