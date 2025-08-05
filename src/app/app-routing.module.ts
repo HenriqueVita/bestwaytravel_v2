@@ -13,12 +13,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/analytics',
+        redirectTo: '/home',
         pathMatch: 'full'
       },
       {
         path: 'home',
-        loadComponent: () => import('./features/dashboard/dashboard-module').then((c) => c.DashboardModule)
+        loadChildren: () => import('./features/dashboard/dashboard-module').then((c) => c.DashboardModule)
       },
       {
         path: 'orcamentos',

@@ -9,7 +9,7 @@ import { ProductSaleComponent } from './product-sale/product-sale.component';
 
 import { ApexOptions, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 @Component({
-  selector: 'app-dash-analytics',
+  selector: 'app-dash-home',
   imports: [SharedModule, NgApexchartsModule, ProductSaleComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.scss']

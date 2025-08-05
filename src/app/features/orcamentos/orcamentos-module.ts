@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OrcamentosRoutingModule } from './orcamentos-routing-module';
 import { Orcamentos } from './orcamentos';
+import { SharedModule } from "src/app/theme/shared/shared.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { Orcamentos } from './orcamentos';
   ],
   imports: [
     CommonModule,
-    OrcamentosRoutingModule
-  ]
+    OrcamentosRoutingModule,
+    SharedModule
+]
 })
 export class OrcamentosModule { }
