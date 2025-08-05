@@ -20,8 +20,8 @@ export interface NavigationItem {
 
 export const NavigationItems: NavigationItem[] = [
   {
-    id: 'navigation',
-    title: 'Navigation',
+    id: 'home',
+    title: 'Home',
     type: 'group',
     icon: 'icon-group',
     children: [
@@ -29,92 +29,78 @@ export const NavigationItems: NavigationItem[] = [
         id: 'dashboard',
         title: 'Dashboard',
         type: 'item',
-        url: '/analytics',
+        url: '/home',
         icon: 'feather icon-home'
       }
     ]
   },
-  {
-    id: 'ui-component',
-    title: 'Ui Component',
+    {
+    id: 'orcamentos',
+    title: 'Orçamentos',
     type: 'group',
     icon: 'icon-group',
     children: [
       {
-        id: 'basic',
-        title: 'Component',
-        type: 'collapse',
-        icon: 'feather icon-box',
-        children: [
-          {
-            id: 'button',
-            title: 'Button',
-            type: 'item',
-            url: '/component/button'
-          },
-          {
-            id: 'badges',
-            title: 'Badges',
-            type: 'item',
-            url: '/component/badges'
-          },
-          {
-            id: 'breadcrumb-pagination',
-            title: 'Breadcrumb & Pagination',
-            type: 'item',
-            url: '/component/breadcrumb-paging'
-          },
-          {
-            id: 'collapse',
-            title: 'Collapse',
-            type: 'item',
-            url: '/component/collapse'
-          },
-          {
-            id: 'tabs-pills',
-            title: 'Tabs & Pills',
-            type: 'item',
-            url: '/component/tabs-pills'
-          },
-          {
-            id: 'typography',
-            title: 'Typography',
-            type: 'item',
-            url: '/component/typography'
-          }
-        ]
+        id: 'lista-orcamentos',
+        title: 'Lista de Orçamentos',
+        type: 'item',
+        url: '/orcamentos',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text'
       }
     ]
   },
   {
-    id: 'Authentication',
-    title: 'Authentication',
+    id: 'vendas',
+    title: 'Vendas',
     type: 'group',
     icon: 'icon-group',
     children: [
       {
-        id: 'signup',
-        title: 'Sign up',
+        id: 'lista-vendas',
+        title: 'Vendas',
         type: 'item',
-        url: '/register',
-        icon: 'feather icon-at-sign',
-        target: true,
-        breadcrumbs: false
+        url: '/vendas',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text'
+      }
+    ]
+  },
+  {
+    id: 'financeiro',
+    title: 'Financeiro',
+    type: 'group',
+    icon: 'icon-group',
+    children: [
+      {
+        id: 'dashboard-financeiro',
+        title: 'Dashboard Financeiro',
+        type: 'item',
+        url: '/financeiro',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text'
       },
       {
-        id: 'signin',
-        title: 'Sign in',
+        id: 'lancamentos',
+        title: 'Lancamentos',
         type: 'item',
-        url: '/login',
-        icon: 'feather icon-log-in',
-        target: true,
-        breadcrumbs: false
+        url: '/financeiro/lancamentos',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text'
+      },
+      {
+        id: 'caixa-diario',
+        title: 'Caixa DIario',
+        type: 'item',
+        url: '/financeiro/caixa-diario',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text'
       }
     ]
   },
   {
-    id: 'chart',
-    title: 'Chart',
+    id: 'graficos',
+    title: 'Gráficos',
     type: 'group',
     icon: 'icon-group',
     children: [
@@ -129,79 +115,28 @@ export const NavigationItems: NavigationItem[] = [
     ]
   },
   {
-    id: 'forms & tables',
-    title: 'Forms & Tables',
+    id: 'cadastros',
+    title: 'Cadastros',
     type: 'group',
     icon: 'icon-group',
     children: [
       {
-        id: 'forms',
-        title: 'Basic Forms',
+        id: 'clientes',
+        title: 'Clientes',
         type: 'item',
-        url: '/forms',
+        url: '/clientes',
         classes: 'nav-item',
         icon: 'feather icon-file-text'
       },
       {
-        id: 'tables',
-        title: 'Tables',
+        id: 'fornecedores',
+        title: 'Fornecedores',
         type: 'item',
-        url: '/tables',
+        url: '/fornecedores',
         classes: 'nav-item',
         icon: 'feather icon-server'
       }
     ]
   },
-  {
-    id: 'other',
-    title: 'Other',
-    type: 'group',
-    icon: 'icon-group',
-    children: [
-      {
-        id: 'sample-page',
-        title: 'Sample Page',
-        type: 'item',
-        url: '/sample-page',
-        classes: 'nav-item',
-        icon: 'feather icon-sidebar'
-      },
-      {
-        id: 'menu-level',
-        title: 'Menu Levels',
-        type: 'collapse',
-        icon: 'feather icon-menu',
-        children: [
-          {
-            id: 'menu-level-2.1',
-            title: 'Menu Level 2.1',
-            type: 'item',
-            url: 'javascript:',
-            external: true
-          },
-          {
-            id: 'menu-level-2.2',
-            title: 'Menu Level 2.2',
-            type: 'collapse',
-            children: [
-              {
-                id: 'menu-level-2.2.1',
-                title: 'Menu Level 2.2.1',
-                type: 'item',
-                url: 'javascript:',
-                external: true
-              },
-              {
-                id: 'menu-level-2.2.2',
-                title: 'Menu Level 2.2.2',
-                type: 'item',
-                url: 'javascript:',
-                external: true
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+
 ];

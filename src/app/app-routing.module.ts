@@ -17,12 +17,12 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'analytics',
-        loadComponent: () => import('./demo/dashboard/dash-analytics.component').then((c) => c.DashAnalyticsComponent)
+        path: 'home',
+        loadComponent: () => import('./features/dashboard/dashboard-module').then((c) => c.DashboardModule)
       },
       {
-        path: 'component',
-        loadChildren: () => import('./demo/ui-element/ui-basic.module').then((m) => m.UiBasicModule)
+        path: 'orcamentos',
+        loadChildren: () => import('./features/orcamentos/orcamentos-module').then((m) => m.OrcamentosModule)
       },
       {
         path: 'chart',
