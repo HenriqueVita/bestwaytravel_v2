@@ -1,4 +1,5 @@
 // angular import
+import { Direction } from '@angular/cdk/bidi';
 import { Component, ElementRef, OnInit, output, viewChild, input } from '@angular/core';
 
 // project import
@@ -24,7 +25,7 @@ export class ChatMsgComponent implements OnInit {
   message_error!: boolean;
   friendWriting!: boolean;
   newReplay: string;
-  direction = 'ltr';
+  direction: Direction = 'ltr';
 
   // constructor
   constructor() {

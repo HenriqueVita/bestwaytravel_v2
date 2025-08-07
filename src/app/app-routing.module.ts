@@ -55,7 +55,14 @@ const routes: Routes = [
         loadComponent: () => import('./demo/pages/authentication/sign-in/sign-in.component').then((c) => c.SignInComponent)
       }
     ]
-  }
+  },
+  { path: 'vendas', loadChildren: () => import('./features/vendas/vendas-module').then(m => m.VendasModule) },
+  { path: 'financeiro', loadChildren: () => import('./features/financeiro/financeiro-module').then(m => m.FinanceiroModule) },
+  { path: 'clientes', loadChildren: () => import('./features/clientes/clientes-module').then(m => m.ClientesModule) },
+  { path: 'faturas', loadChildren: () => import('./features/faturas/faturas-module').then(m => m.FaturasModule) },
+  { path: 'pagamentos', loadChildren: () => import('./features/pagamentos/pagamentos-module').then(m => m.PagamentosModule) },
+  { path: 'usuarios', loadChildren: () => import('./features/usuarios/usuarios-module').then(m => m.UsuariosModule) },
+  { path: 'destinos', loadChildren: () => import('./features/destinos/destinos-module').then(m => m.DestinosModule) }
 ];
 
 @NgModule({

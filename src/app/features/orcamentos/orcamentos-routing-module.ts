@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Orcamentos } from './orcamentos';
+import { OrcamentosComponent } from './orcamentos';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { Component } from '@angular/core';
 
-const routes: Routes = [{ path: '', component: Orcamentos }];
+const routes: Routes = [{ path: '', component: OrcamentosComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule, MatCardModule],

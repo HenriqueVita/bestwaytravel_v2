@@ -4,6 +4,7 @@
 
 import packageInfo from '../../package.json';
 
+// environment.ts (ambiente de desenvolvimento local)
 export const environment = {
   appVersion: packageInfo.version,
   production: false,
