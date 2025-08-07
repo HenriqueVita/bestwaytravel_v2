@@ -5,6 +5,7 @@ import { FinanceiroRoutingModule } from './financeiro-routing-module';
 import { Financeiro } from './financeiro';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
   ],
   imports: [
     CommonModule,
+    MatTableModule,
     FinanceiroRoutingModule,
     ReactiveFormsModule,
     NgApexchartsModule,

@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FinanceiroService } from './financeiro.service';
 
 @Component({
   selector: 'app-financeiro',
   standalone: false,
-  templateUrl: './financeiro.html',
+  templateUrl: './financeiro.component.html',
   styleUrl: './financeiro.scss'
 })
-export class Financeiro {
+export class Financeiro implements OnInit {
+  lancamentos: any[] = [];
 
+  constructor(private financeiroService: FinanceiroService) {}
+
+  ngOnInit() {
+    this.carregarLancamentos();
+  }
+
+  carregarLancamentos() {
+    this.financeiroService.getLancamentos().subscribe(data => {
+      this.lancamentos = data;
+    });
+  }
 }
+

@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from '../clientes/clientes.service';
+import { Lancamento } from './lancamentos/model/lancamento.model';
 
-interface Lancamento
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,11 @@ interface Lancamento
  * processing payments, generating financial reports, and other related tasks.
  */
 export class FinanceiroService {
-
   private apiUrl = 'https://bestwaytravel-backend.onrender.com/api/financeiro';
 
   constructor(private http: HttpClient) {}
 
-  listarLancamentos(): Observable<Lancamento[]> {
+  getLancamentos(): Observable<Lancamento[]> {
     return this.http.get<any[]>(`${this.apiUrl}/lancamentos`);
   }
 

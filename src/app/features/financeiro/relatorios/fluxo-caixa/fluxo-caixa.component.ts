@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexXAxis, ApexTitleSubtitle, ChartComponent } from 'ng-apexcharts';
 import { FinanceiroService } from '../../financeiro.service';
-import { Lancamento } from '../../lancamentos/models/lancamento.model';
+import { Lancamento } from '../../lancamentos/model/lancamento.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -36,11 +36,11 @@ export class FluxoCaixaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.financeiroService.listarLancamentos().subscribe((dados: Lancamento[]) => {
+    this.financeiroService.getLancamentos().subscribe((dados: Lancamento[]) => {
       const agrupado: Record<string, { receita: number; despesa: number }> = {};
 
       dados.forEach(l => {
-        const mes = new Date(l.dataVencimento).toLocaleString('default', { month: 'short', year: 'numeric' });
+        const mes = new Date(l.data).toLocaleString('default', { month: 'short', year: 'numeric' });
         if (!agrupado[mes]) agrupado[mes] = { receita: 0, despesa: 0 };
         if (l.tipo === 'receita') agrupado[mes].receita += l.valor;
         else agrupado[mes].despesa += l.valor;
@@ -56,7 +56,7 @@ export class FluxoCaixaComponent implements OnInit {
           { name: 'Receitas', data: receitas },
           { name: 'Despesas', data: despesas }
         ],
-        xaxis: { categories }
+        xaxis: { categories: categorias }
       };
     });
   }
