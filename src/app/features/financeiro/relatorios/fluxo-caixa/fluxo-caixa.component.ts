@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexXAxis, ApexTitleSubtitle, ChartComponent } from 'ng-apexcharts';
 import { FinanceiroService } from '../../financeiro.service';
-import { Lancamento } from '../../lancamentos/model/lancamento.model';
+import { Lancamento } from '../../../model/lancamento.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -13,8 +13,8 @@ export type ChartOptions = {
 @Component({
   selector: 'app-fluxo-caixa',
   imports: [ChartComponent],
-  templateUrl: './fluxo-caixa.html',
-  styleUrl: './fluxo-caixa.scss'
+  templateUrl: './fluxo-caixa.component.html',
+  styleUrl: './fluxo-caixa.component.scss'
 })
 export class FluxoCaixaComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;

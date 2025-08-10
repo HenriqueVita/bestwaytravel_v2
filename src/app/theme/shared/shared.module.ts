@@ -55,7 +55,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgbNavModule,
     NgScrollbarModule,
     TableHeaderComponent,
-    MaterialModule
+    MaterialModule,
+    
   ],
   declarations: []
 })

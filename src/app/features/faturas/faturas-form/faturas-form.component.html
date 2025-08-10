@@ -1,0 +1,146 @@
+<h2 mat-dialog-title>
+  {{ form.value.id ? 'Editar' : 'Nova' }} Fatura
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="salvar()" class="row g-3">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Número</mat-label>
+        <input matInput formControlName="numero" required>
+        <mat-error *ngIf="form.get('numero')?.hasError('required')">
+          Número é obrigatório
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="cliente" required>
+          <mat-option *ngFor="let cliente of clientes" [value]="{id: cliente.id, nome: cliente.nome}">
+            {{ cliente.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('cliente')?.hasError('required')">
+          Cliente é obrigatório
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Data de Emissão</mat-label>
+        <input matInput [matDatepicker]="pickerEmissao" formControlName="dataEmissao" required>
+        <mat-datepicker-toggle matSuffix [for]="pickerEmissao"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEmissao></mat-datepicker>
+        <mat-error *ngIf="form.get('dataEmissao')?.hasError('required')">
+          Data de emissão é obrigatória
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Data de Vencimento</mat-label>
+        <input matInput [matDatepicker]="pickerVencimento" formControlName="dataVencimento" required>
+        <mat-datepicker-toggle matSuffix [for]="pickerVencimento"></mat-datepicker-toggle>
+        <mat-datepicker #pickerVencimento></mat-datepicker>
+        <mat-error *ngIf="form.get('dataVencimento')?.hasError('required')">
+          Data de vencimento é obrigatória
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="ABERTA">Aberta</mat-option>
+          <mat-option value="PAGA">Paga</mat-option>
+          <mat-option value="VENCIDA">Vencida</mat-option>
+          <mat-option value="CANCELADA">Cancelada</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <h5>Itens da Fatura</h5>
+      <div formArrayName="itens" class="mb-3">
+        <div *ngFor="let item of itens.controls; let i = index" [formGroupName]="i" class="row g-3 mb-3 border-bottom pb-3">
+          <div class="col-md-5">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Descrição</mat-label>
+              <input matInput formControlName="descricao" required>
+              <mat-error *ngIf="itens.at(i).get('descricao')?.hasError('required')">
+                Descrição é obrigatória
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Quantidade</mat-label>
+              <input matInput type="number" formControlName="quantidade" (change)="calcularTotalItem(i)" required>
+              <mat-error *ngIf="itens.at(i).get('quantidade')?.hasError('required')">
+                Quantidade é obrigatória
+              </mat-error>
+              <mat-error *ngIf="itens.at(i).get('quantidade')?.hasError('min')">
+                Quantidade mínima é 1
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Valor Unitário</mat-label>
+              <input matInput type="number" step="0.01" formControlName="valorUnitario" (change)="calcularTotalItem(i)" required>
+              <span matPrefix>R$&nbsp;</span>
+              <mat-error *ngIf="itens.at(i).get('valorUnitario')?.hasError('required')">
+                Valor é obrigatório
+              </mat-error>
+              <mat-error *ngIf="itens.at(i).get('valorUnitario')?.hasError('min')">
+                Valor mínimo é 0.01
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Total</mat-label>
+              <input matInput type="number" formControlName="valorTotal" readonly>
+              <span matPrefix>R$&nbsp;</span>
+            </mat-form-field>
+          </div>
+          <div class="col-md-1 d-flex align-items-center">
+            <button mat-icon-button color="warn" type="button" (click)="removerItem(i)" *ngIf="itens.length > 1">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button mat-button type="button" (click)="adicionarItem()">
+        <mat-icon>add</mat-icon> Adicionar Item
+      </button>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Observações</mat-label>
+        <textarea matInput formControlName="observacoes" rows="2"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <div class="alert alert-primary">
+        <strong>Total da Fatura:</strong> {{ calcularTotalFatura() | currency:'BRL' }}
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" 
+          [disabled]="form.invalid || itens.length === 0 || loading">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+    Salvar
+  </button>
+</mat-dialog-actions>

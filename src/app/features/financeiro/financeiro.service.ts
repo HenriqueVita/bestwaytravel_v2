@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from '../clientes/clientes.service';
-import { Lancamento } from './lancamentos/model/lancamento.model';
+import { Lancamento } from '../model/lancamento.model';
+import { MovimentosCaixa } from './caixa/movimentos-caixa/movimentos-caixa';
 
 
 
@@ -75,4 +76,18 @@ export class FinanceiroService {
     }
     return false;
   }
+
+  getFluxoCaixa(params: any): Observable<MovimentosCaixa[]> {
+    return this.http.get<MovimentosCaixa[]>(`${this.apiUrl}/fluxo-caixa`, { params });
+  }
+
+  getResumoFinanceiro(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/resumo`);
+  }
+
+  getRelatorioFinanceiro(params: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/relatorios`, { params });
+  }
+
+  
 }

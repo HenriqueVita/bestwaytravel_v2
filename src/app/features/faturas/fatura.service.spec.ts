@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FaturasService } from './faturas.service';
+import { FaturaService } from './fatura.service';
 
-describe('FaturasService', () => {
-  let service: FaturasService;
+describe('FaturaService', () => {
+  let service: FaturaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FaturasService);
+    service = TestBed.inject(FaturaService);
   });
 
   it('should be created', () => {

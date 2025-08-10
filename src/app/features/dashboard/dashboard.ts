@@ -1,16 +1,13 @@
 // angular import
 import { Component, viewChild } from '@angular/core';
-
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { ProductSaleComponent } from './product-sale/product-sale.component';
-
 // 3rd party import
-
 import { ApexOptions, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
+
 @Component({
   selector: 'app-dash-home',
-  imports: [SharedModule, NgApexchartsModule, ProductSaleComponent],
+  imports: [SharedModule, NgApexchartsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.scss']
 })
@@ -22,6 +19,14 @@ export class DashboardComponent {
   chartOptions_1!: Partial<ApexOptions>;
   chartOptions_2!: Partial<ApexOptions>;
   chartOptions_3!: Partial<ApexOptions>;
+  loading: any;
+  resumo: any;
+  barChartData: any;
+  barChartOptions: any;
+  barChartType: any;
+  lineChartData: any;
+  lineChartOptions: any;
+  lineChartType: any;
 
   // constructor
   constructor() {
@@ -209,6 +214,7 @@ export class DashboardComponent {
         }
       }
     };
+    this.resumo = {};
   }
   cards = [
     {
@@ -242,9 +248,8 @@ export class DashboardComponent {
       text: 'This Month',
       number: '$9,562',
       no: '$542'
-    }
+    }    
   ];
-
   images = [
     {
       src: 'assets/images/gallery-grid/img-grd-gal-1.jpg',
@@ -262,4 +267,5 @@ export class DashboardComponent {
       size: 'PNG-150KB'
     }
   ];
+
 }

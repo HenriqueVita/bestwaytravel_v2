@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadastroLancamento } from './cadastro-lancamento';
+import { FluxoCaixa } from './fluxo-caixa.component';
+import { describe, beforeEach, it } from 'node:test';
 
-describe('CadastroLancamento', () => {
-  let component: CadastroLancamento;
-  let fixture: ComponentFixture<CadastroLancamento>;
+describe('FluxoCaixa', () => {
+  let component: FluxoCaixa;
+  let fixture: ComponentFixture<FluxoCaixa>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CadastroLancamento]
+      imports: [FluxoCaixa]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CadastroLancamento);
+    fixture = TestBed.createComponent(FluxoCaixa);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

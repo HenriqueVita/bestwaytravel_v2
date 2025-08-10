@@ -74,7 +74,7 @@ export const NavigationItems: NavigationItem[] = [
     children: [
       {
         id: 'dashboard-financeiro',
-        title: 'Dashboard Financeiro',
+        title: 'Dashboard',
         type: 'item',
         url: '/financeiro',
         classes: 'nav-item',
