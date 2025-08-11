@@ -24,6 +24,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FinanceiroService } from './financeiro.service';
 import { FaturaService } from '../faturas/fatura.service';
+import { CadastroLancamentoComponent } from './lancamentos/cadastro-lancamento/cadastro-lancamento.component';
+import { ListaLancamentosComponent } from './lancamentos/lista-lancamentos/lista-lancamentos.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CurrencyBrPipe } from 'src/app/pipes/currency-br.pipe';
 
 
 @NgModule({
@@ -31,6 +35,8 @@ import { FaturaService } from '../faturas/fatura.service';
     Financeiro
   ],
   imports: [
+    CurrencyBrPipe, 
+    NgApexchartsModule,
     FormsModule,
     ReactiveFormsModule,
     // Angular Material

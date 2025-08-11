@@ -10,12 +10,15 @@ import { LancamentoService } from '../lancamento.service';
 import { Lancamento } from 'src/app/features/model/lancamento.model';
 import { SharedModule } from "src/app/theme/shared/shared.module";
 import { CadastroLancamentoComponent } from '../cadastro-lancamento/cadastro-lancamento.component';
+import { FinanceiroService } from '../../financeiro.service';
+import { CurrencyBrPipe } from 'src/app/pipes/currency-br.pipe';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-lancamentos-list',
   templateUrl: './lista-lancamentos.component.html',
   styleUrls: ['./lista-lancamentos.component.scss'],
-  providers: [DatePipe],
+  providers: [DatePipe, CurrencyBrPipe],
   imports: [SharedModule]
 })
 export class ListaLancamentosComponent implements OnInit {
@@ -29,7 +32,7 @@ export class ListaLancamentosComponent implements OnInit {
 categorias: any;
 
   constructor(
-    private lancamentoService: LancamentoService,
+    private financeiroService: FinanceiroService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
@@ -69,7 +72,7 @@ categorias: any;
       params.categoria = this.filtroForm.value.categoria;
     }
 
-    this.lancamentoService.getAll().subscribe({
+    this.financeiroService.listarLancamentos().subscribe({
       next: (lancamentos) => {
         this.dataSource = new MatTableDataSource(lancamentos);
         this.dataSource.paginator = this.paginator;
@@ -100,7 +103,7 @@ categorias: any;
 
   confirmarExclusao(lancamento: Lancamento): void {
     if (confirm(`Deseja realmente excluir o lançamento "${lancamento.descricao}"?`)) {
-      this.lancamentoService.delete(lancamento.id!).subscribe({
+      this.financeiroService.deletarLancamento(lancamento.id!).subscribe({
         next: () => {
           this.snackBar.open('Lançamento excluído com sucesso!', 'Fechar', { duration: 3000 });
           this.carregarLancamentos();

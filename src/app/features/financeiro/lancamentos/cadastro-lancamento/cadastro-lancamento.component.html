@@ -1,30 +1,43 @@
-<div class="container">
-  <h2>Novo Lançamento</h2>
+<form [formGroup]="lancamentoForm" (ngSubmit)="salvar()">
+  <div>
+    <label>Tipo</label>
+    <select formControlName="tipo">
+      <option value="receita">Receita</option>
+      <option value="despesa">Despesa</option>
+    </select>
+  </div>
 
-  <form [formGroup]="form" (ngSubmit)="salvar()">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Data</mat-label>
-      <input matInput type="date" formControlName="data" />
-    </mat-form-field>
+  <div>
+    <label>Descrição</label>
+    <input type="text" formControlName="descricao" />
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Descrição</mat-label>
-      <input matInput formControlName="descricao" />
-    </mat-form-field>
+  <div>
+    <label>Categoria</label>
+    <select formControlName="categoria">
+      @for(cat of categorias; track cat){
+        <option [value]="cat">{{ cat }}</option>
+      }      
+    </select>
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Tipo</mat-label>
-      <mat-select formControlName="tipo">
-        <mat-option value="receita">Receita</mat-option>
-        <mat-option value="despesa">Despesa</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div>
+    <label>Valor</label>
+    <input type="number" step="0.01" formControlName="valor" />
+  </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Valor</mat-label>
-      <input matInput type="number" formControlName="valor" />
-    </mat-form-field>
+  <div>
+    <label>Data de Vencimento</label>
+    <input type="date" formControlName="dataVencimento" />
+  </div>
 
-    <button mat-raised-button color="primary" type="submit">Salvar</button>
-  </form>
-</div>
+  <div>
+    <label>Status</label>
+    <select formControlName="status">
+      <option value="pendente">Pendente</option>
+      <option value="pago">Pago</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="lancamentoForm.invalid">Salvar</button>
+</form>

@@ -17,7 +17,7 @@ export class Financeiro implements OnInit {
   }
 
   carregarLancamentos() {
-    this.financeiroService.getLancamentos().subscribe(data => {
+    this.financeiroService.listarLancamentos().subscribe(data => {
       this.lancamentos = data;
     });
   }

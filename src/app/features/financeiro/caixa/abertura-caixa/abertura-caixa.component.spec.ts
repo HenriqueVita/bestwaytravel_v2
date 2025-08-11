@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AberturaCaixa } from './abertura-caixa';
+import { AberturaCaixaComponent } from './abertura-caixa.component';
 
 describe('AberturaCaixa', () => {
-  let component: AberturaCaixa;
-  let fixture: ComponentFixture<AberturaCaixa>;
+  let component: AberturaCAberturaCaixaComponentaixa;
+  let fixture: ComponentFixture<AberturaCaixaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AberturaCaixa]
+      imports: [AberturaCaixaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AberturaCaixa);
+    fixture = TestBed.createComponent(AberturaCaixaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

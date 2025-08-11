@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListaLancamentosComponent } from './lista-lancamentos.component';
 import { describe, beforeEach, it } from 'node:test';
 
-describe('ListaLancamentos', () => {
+describe('ListaLancamentosComponent', () => {
   let component: ListaLancamentosComponent;
   let fixture: ComponentFixture<ListaLancamentosComponent>;
 

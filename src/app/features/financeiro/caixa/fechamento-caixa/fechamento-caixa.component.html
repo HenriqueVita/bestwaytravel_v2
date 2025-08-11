@@ -1,0 +1,11 @@
+<h2>Fechamento de Caixa</h2>
+
+<div *ngIf="caixaAberto">
+  <p>Data de abertura: {{ caixaAberto!.dataAbertura | date:'short' }}</p>
+  <p>Saldo inicial: {{ caixaAberto!.saldo_inicial | currencyBr:'BRL' }}</p>
+  <button (click)="fechar()">Fechar Caixa</button>
+</div>
+
+<div *ngIf="!caixaAberto">
+  <p>Nenhum caixa aberto no momento.</p>
+</div>

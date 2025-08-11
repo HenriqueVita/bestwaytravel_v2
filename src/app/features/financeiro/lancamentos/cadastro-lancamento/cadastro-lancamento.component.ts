@@ -1,86 +1,50 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Lancamento } from 'src/app/features/model/lancamento.model';
-import { LancamentoService } from '../lancamento.service';
-import { SharedModule } from "src/app/theme/shared/shared.module";
+import { FinanceiroService } from '../../financeiro.service';
+import { MaterialModule } from 'src/app/material.module';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
-  selector: 'cadastro-lancamento',
+  selector: 'app-cadastro-lancamento',
   templateUrl: './cadastro-lancamento.component.html',
-  styleUrls: ['./cadastro-lancamento.component.scss'],
   imports: [SharedModule]
 })
-export class CadastroLancamentoComponent implements OnInit {
-  form: FormGroup;
-  loading = false;
-  categorias: any[] = [];
+export class CadastroLancamentoComponent {
+  lancamentoForm: FormGroup;
+
+  categorias = ['Transporte', 'Hospedagem', 'Seguro', 'Alimentação'];
 
   constructor(
     private fb: FormBuilder,
-    private lancamentoService: LancamentoService,
-    private snackBar: MatSnackBar,
-    private dialogRef: MatDialogRef<CadastroLancamentoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Lancamento
+    private financeiroService: FinanceiroService
   ) {
-    this.form = this.fb.group({
-      id: [null],
+    this.lancamentoForm = this.fb.group({
+      tipo: ['receita', Validators.required],
       descricao: ['', Validators.required],
-      valor: ['', [Validators.required, Validators.min(0.01)]],
-      data: ['', Validators.required],
-      tipo: ['DESPESA', Validators.required],
       categoria: ['', Validators.required],
-      status: ['PENDENTE', Validators.required],
-      contaBancaria: ['', Validators.required],
-      observacoes: [''],
-      recorrente: [false],
-      periodoRecorrencia: ['']
+      valor: [0, [Validators.required, Validators.min(0.01)]],
+      dataVencimento: ['', Validators.required],
+      data: [new Date()], 
+      status: ['pendente', Validators.required]
     });
   }
 
-  ngOnInit(): void {
-    if (this.data) {
-      this.form.patchValue(this.data);
-    }
-    this.carregarCategorias();
-  }
+  salvar() {
+    if (this.lancamentoForm.invalid) return;
 
-  carregarCategorias(): void {
-    this.lancamentoService.getCategorias().subscribe((categorias: any[]) => {
-      this.categorias = categorias;
+    const novoLancamento: Lancamento = this.lancamentoForm.value;
+
+    this.financeiroService.salvarLancamento(novoLancamento).subscribe({
+      next: () => {
+        alert('Lançamento salvo com sucesso!');
+        this.lancamentoForm.reset({ tipo: 'receita', status: 'pendente' });
+      },
+      error: (err: any) => {
+        console.error(err);
+        alert('Erro ao salvar lançamento.');
+      }
     });
-  }
-
-  salvar(): void {
-    if (this.form.valid) {
-      this.loading = true;
-      const lancamento = this.form.value as Lancamento;
-
-      const operacao = lancamento.id 
-        ? this.lancamentoService.update(lancamento.id, lancamento)
-        : this.lancamentoService.create(lancamento);
-
-      operacao.subscribe({
-        next: () => {
-          this.snackBar.open('Lançamento salvo com sucesso!', 'Fechar', { duration: 3000 });
-          this.dialogRef.close(true);
-        },
-        error: () => {
-          this.snackBar.open('Erro ao salvar lançamento.', 'Fechar', { duration: 3000 });
-          this.loading = false;
-        }
-      });
-    }
-  }
-
-  onTipoChange(): void {
-    // Filtra categorias pelo tipo selecionado
-    this.form.get('categoria')?.setValue('');
-  }
-
-  get filteredCategorias(): any[] {
-    const tipo = this.form.get('tipo')?.value;
-    return this.categorias.filter(c => c.tipo === tipo);
   }
 }

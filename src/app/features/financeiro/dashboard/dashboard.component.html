@@ -1,0 +1,37 @@
+<h2>Dashboard Financeiro</h2>
+
+<!-- Cards resumo -->
+<div style="display: flex; gap: 20px; margin-bottom: 20px;">
+  <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+    <h3>Saldo Caixa</h3>
+    <p><strong>{{ saldoCaixa | currencyBr:'BRL' }}</strong></p>
+  </div>
+  <div style="background: #e6ffe6; padding: 15px; border-radius: 8px;">
+    <h3>Total Entradas (mês)</h3>
+    <p style="color: green;"><strong>{{ totalEntradasMes | currencyBr:'BRL' }}</strong></p>
+  </div>
+  <div style="background: #ffe6e6; padding: 15px; border-radius: 8px;">
+    <h3>Total Saídas (mês)</h3>
+    <p style="color: red;"><strong>{{ totalSaidasMes | currencyBr:'BRL' }}</strong></p>
+  </div>
+</div>
+
+<!-- Gráfico de barras -->
+<div style="margin-bottom: 40px;">
+  <apx-chart
+    [series]="chartFluxo.series"
+    [chart]="chartFluxo.chart"
+    [xaxis]="chartFluxo.xaxis"
+    [title]="chartFluxo.title">
+  </apx-chart>
+</div>
+
+<!-- Gráfico de pizza -->
+<div>
+  <apx-chart
+    [series]="chartCategorias.series"
+    [chart]="chartCategorias.chart"
+    [labels]="chartCategorias.labels"
+    [responsive]="chartCategorias.responsive">
+  </apx-chart>
+</div>

@@ -36,7 +36,7 @@ export class FluxoCaixaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.financeiroService.getLancamentos().subscribe((dados: Lancamento[]) => {
+    this.financeiroService.listarLancamentos().subscribe((dados: Lancamento[]) => {
       const agrupado: Record<string, { receita: number; despesa: number }> = {};
 
       dados.forEach(l => {

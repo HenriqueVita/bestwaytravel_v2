@@ -21,8 +21,9 @@ import { NgbDropdownModule, NgbNavModule, NgbModule } from '@ng-bootstrap/ng-boo
 import { TableHeaderComponent } from './components/table-header-component/table-header-component';
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 import { OrcamentosModule } from 'src/app/features/orcamentos/orcamentos-module';
-import { MaterialModule } from 'src/app/material.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from 'src/app/material.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [  
@@ -40,6 +41,7 @@ import { MatIconModule } from '@angular/material/icon';
     NgScrollbarModule,
     NgxMaskDirective,
     MaterialModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatIconModule,
@@ -56,7 +58,7 @@ import { MatIconModule } from '@angular/material/icon';
     NgScrollbarModule,
     TableHeaderComponent,
     MaterialModule,
-    
+    ReactiveFormsModule
   ],
   declarations: []
 })

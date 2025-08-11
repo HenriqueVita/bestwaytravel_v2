@@ -1,0 +1,8 @@
+<h2>Abertura de Caixa</h2>
+<form [formGroup]="form" (ngSubmit)="abrir()">
+  <div>
+    <label>Saldo Inicial</label>
+    <input type="number" formControlName="saldoInicial" step="0.01">
+  </div>
+  <button type="submit" [disabled]="form.invalid">Abrir Caixa</button>
+</form>

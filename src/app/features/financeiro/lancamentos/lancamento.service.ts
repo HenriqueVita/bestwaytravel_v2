@@ -9,11 +9,7 @@ export class LancamentoService {
   private apiUrl = `${environment.apiUrl}/lancamentos`;
 
   constructor(private http: HttpClient) { }
-
-  getAll(): Observable<Lancamento[]> {
-    return this.http.get<Lancamento[]>(this.apiUrl);
-  }
-
+  
   getById(id: number): Observable<Lancamento> {
     return this.http.get<Lancamento>(`${this.apiUrl}/${id}`);
   }
