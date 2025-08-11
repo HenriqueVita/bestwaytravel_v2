@@ -62,11 +62,11 @@ export class DashboardComponent implements OnInit {
         const anoAtual = new Date().getFullYear();
 
         this.totalEntradasMes = lancamentos
-          .filter(l => l.tipo === 'receita' && new Date(l.dataVencimento).getMonth() === mesAtual && new Date(l.dataVencimento).getFullYear() === anoAtual)
+          .filter(l => l.tipo === 'receita' && new Date(l.data_vencimento).getMonth() === mesAtual && new Date(l.data_vencimento).getFullYear() === anoAtual)
           .reduce((sum, l) => sum + l.valor, 0);
 
         this.totalSaidasMes = lancamentos
-          .filter(l => l.tipo === 'despesa' && new Date(l.dataVencimento).getMonth() === mesAtual && new Date(l.dataVencimento).getFullYear() === anoAtual)
+          .filter(l => l.tipo === 'despesa' && new Date(l.data_vencimento).getMonth() === mesAtual && new Date(l.data_vencimento).getFullYear() === anoAtual)
           .reduce((sum, l) => sum + l.valor, 0);
       });
     });
@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
       const agrupado: Record<string, { receita: number; despesa: number }> = {};
 
       lancamentos.forEach(l => {
-        const mes = new Date(l.dataVencimento).toLocaleString('default', { month: 'short', year: 'numeric' });
+        const mes = new Date(l.data_vencimento).toLocaleString('default', { month: 'short', year: 'numeric' });
         if (!agrupado[mes]) agrupado[mes] = { receita: 0, despesa: 0 };
         if (l.tipo === 'receita') agrupado[mes].receita += l.valor;
         else agrupado[mes].despesa += l.valor;

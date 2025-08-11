@@ -1,5 +1,5 @@
 export interface Lancamento {
-  dataVencimento: string | number | Date;
+  data_vencimento: string | number | Date;
   id?: number;
   data: string; // yyyy-MM-dd
   descricao: string;
