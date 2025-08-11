@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { VendasRoutingModule } from './vendas-routing-module';
-import { Vendas } from './vendas';
+import { VendasListComponent } from './vendas.component';
 
 
 @NgModule({
   declarations: [
-    Vendas
+    
   ],
   imports: [
     CommonModule,
-    VendasRoutingModule
+    VendasRoutingModule,
+    VendasListComponent
   ]
 })
 export class VendasModule { }

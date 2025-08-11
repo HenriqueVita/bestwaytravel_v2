@@ -9,6 +9,26 @@ File: style.css
 =================================================================================
 =================================================================================== */
 
+:root{
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --accent: #0d6efd;
+  --muted: #6b7280;
+}
+
+body { background:var(--bg); font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif; margin:0; color:#0b2545; }
+.mat-card { border-radius:12px; }
+.mat-form-field-appearance-fill .mat-form-field-flex { background:#fbfdff; border-radius:8px; }
+.mat-form-field-appearance-fill .mat-form-field-label { color:#6b7280; }
+.mat-form-field-appearance-fill .mat-form-field-ripple { background:#0d6efd; }
+.mat-form-field-appearance-fill .mat-form-field-outline { border-color:#e5e7eb; }
+.mat-form-field-appearance-fill .mat-form-field-outline-thick { border-color:#e5e7eb; }
+.mat-form-field-appearance-fill .mat-form-field-outline-gap { border-color:#e5e7eb; }
+.mat-form-field-appearance-fill .mat-form-field-label { color:#6b7280; }
+.mat-form-field-appearance-fill .mat-form-field-label-focus { color:#0d6efd     ; }
+.mat-form-field-appearance-fill .mat-form-field-ripple { background:#0d6efd; }
+.mat-form-field-appearance-fill .mat-form-field-underline { background:#0d6efd; }
+
 // Theme Font
 @import 'scss/themes/font/theme-font';
 

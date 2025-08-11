@@ -1,0 +1,6 @@
+.card { max-width: 980px; margin: 16px auto; padding: 12px; border-radius: 12px; box-shadow: 0 8px 30px rgba(11, 25, 50, 0.06); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 12px; align-items:start; }
+    .full { grid-column: 1 / -1; }
+    .readonly input { background:#f6f7fb; }
+    .actions { display:flex; gap:12px; justify-content:flex-end; margin-top: 16px; }
+    @media (max-width:720px){ .actions{ flex-direction:column; } }

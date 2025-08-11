@@ -1,0 +1,114 @@
+  <mat-card class="card">
+    <mat-card-title>Orçamento</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="salvar()">
+        <div class="grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome do Cliente</mat-label>
+            <input matInput appearence='outline' formControlName="nome_cliente" required />
+            @if(form.controls['nome_cliente'].hasError('minlength')){
+                <mat-error>Mínimo 3 caracteres</mat-error>
+            }
+            @if(form.controls['nome_cliente'].hasError('maxlength')){
+                <mat-error>Máximo 100 caracteres</mat-error>
+            }@if(form.controls['nome_cliente'].hasError('required')) { 
+                <mat-error>Obrigatório</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fornecedor</mat-label>
+            <input matInput appearence='outline' formControlName="fornecedor" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>LOC / ID da Reserva</mat-label>
+            <input matInput appearence='outline' formControlName="loc_reserva" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Data da Viagem</mat-label>
+            <input matInput appearence='outline' [matDatepicker]="pickerViagem" formControlName="data_viagem" />
+            <mat-datepicker-toggle matSuffix [for]="pickerViagem"></mat-datepicker-toggle>
+            <mat-datepicker #pickerViagem></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Produto</mat-label>
+            <mat-select formControlName="produto" required>
+              <mat-option *ngFor="let p of produtos" [value]="p">{{p}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['produto'].hasError('required')">Obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Valor (R$)</mat-label>
+            <input matInput appearence='outline' type="number" formControlName="valor" required />
+            <mat-error *ngIf="form.controls['valor'].hasError('required')">Obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Taxa (R$)</mat-label>
+            <input matInput appearence='outline' type="number" formControlName="taxa" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="readonly">
+            <mat-label>Valor Total (Valor + Taxa)</mat-label>
+            <input matInput appearence='outline' [value]="valorTotal | number:'1.2-2'" readonly />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>% da Comissão</mat-label>
+            <input matInput appearence='outline' type="number" formControlName="percentual_comissao" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Incentivo (R$)</mat-label>
+            <input matInput appearence='outline' type="number" formControlName="incentivo" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Desconto (R$)</mat-label>
+            <input matInput appearence='outline' type="number" formControlName="desconto" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="readonly">
+            <mat-label>Valor da Comissão</mat-label>
+            <input matInput appearence='outline' [value]="valorComissao | number:'1.2-2'" readonly />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Forma de Pagamento</mat-label>
+            <mat-select formControlName="formaPagamento" required>
+              <mat-option value="cartao">Cartão</mat-option>
+              <mat-option value="faturado">Faturado</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="isFaturado">
+            <mat-label>Data do Pagamento (Faturado)</mat-label>
+            <input matInput appearence='outline' [matDatepicker]="pickerPagamento" formControlName="data_pagamento" />
+            <mat-datepicker-toggle matSuffix [for]="pickerPagamento"></mat-datepicker-toggle>
+            <mat-datepicker #pickerPagamento></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="isCartao">
+            <mat-label>Data de Recebimento da Comissão (Cartão)</mat-label>
+            <input matInput appearence='outline' [matDatepicker]="pickerRecebComissao" formControlName="data_recebimento_comissao" />
+            <mat-datepicker-toggle matSuffix [for]="pickerRecebComissao"></mat-datepicker-toggle>
+            <mat-datepicker #pickerRecebComissao></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full">
+            <mat-label>Observações</mat-label>
+            <textarea matInput formControlName="observacoes" rows="3"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Salvar Orçamento</button>
+          <button mat-stroked-button type="button" (click)="cancelar()">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>

@@ -46,7 +46,15 @@ export const NavigationItems: NavigationItem[] = [
         type: 'item',
         url: '/orcamentos',
         classes: 'nav-item',
-        icon: 'feather icon-file-text'
+        icon: 'feather icon-file-text',
+      },
+      {
+        id: 'novo-orcamento',
+        title: 'Novo Orçamento',
+        type: 'item',
+        url: '/orcamentos/novo',
+        classes: 'nav-item',
+        icon: 'feather icon-file-text',
       }
     ]
   },

@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'faturas', loadChildren: () => import('./features/faturas/faturas-module').then(m => m.FaturasModule) },
       { path: 'pagamentos', loadChildren: () => import('./features/pagamentos/pagamentos-module').then(m => m.PagamentosModule) },
       { path: 'usuarios', loadChildren: () => import('./features/usuarios/usuarios-module').then(m => m.UsuariosModule) },
-      { path: 'destinos', loadChildren: () => import('./features/destinos/destinos-module').then(m => m.DestinosModule) }
+      { path: 'destinos', loadChildren: () => import('./features/destinos/destinos-module').then(m => m.DestinosModule) },
     ]
   },
   {

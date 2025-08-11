@@ -1,0 +1,1 @@
+export type ProdutoTipo = 'Hotel' | 'Aéreo' | 'Pacote' | 'Passeio' | 'Seguro' | 'Outro';
