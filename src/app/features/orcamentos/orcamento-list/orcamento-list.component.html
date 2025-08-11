@@ -2,7 +2,7 @@
 <mat-card class="mat-elevation-z2">
     <mat-card-header>
         <div class="row justify-content-end">
-            <a mat-flat-button color="primary" [routerLink]="['/orcamentos/lista/novo']">Novo Orçamento</a>
+            <a mat-flat-button color="primary" (click)="abrirFormulario()">Novo Orçamento</a>
         </div>
     </mat-card-header>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 full-table">

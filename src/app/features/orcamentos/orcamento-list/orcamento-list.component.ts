@@ -13,6 +13,7 @@ import { CadastroLancamentoComponent } from '../../financeiro/lancamentos/cadast
 import { OrcamentoFormComponent } from '../orcamento-form/orcamento-form.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-orcamentos-list',
@@ -26,7 +27,7 @@ export class OrcamentosListComponent implements OnInit {
   private svc = inject(OrcamentosService);  
   dataSource!: MatTableDataSource<Orcamento>;
   cols = ['dataOrcamento','cliente','produto','valorTotal','valorComissao','status','acoes'];
-  dialog: any;
+  private dialog: MatDialog = inject(MatDialog);
   loading: boolean = false;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,7 +41,6 @@ export class OrcamentosListComponent implements OnInit {
 
   abrirFormulario(orcamento?: Orcamento): void {
     const dialogRef = this.dialog.open(OrcamentoFormComponent, {
-      width: '600px',
       data: orcamento
     });
 
