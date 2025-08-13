@@ -8,7 +8,7 @@ import { Orcamento } from '../model/orcamento.model';
 @Injectable({ providedIn: 'root' })
 export class OrcamentosService {
   private http = inject(HttpClient);
-  private baseUrl = (window as any).__env?.API_URL || 'http://localhost:3000/api';
+  private baseUrl = (window as any).__env?.apiUrl;
   // simples cache via signal
   orcamentosSignal = signal<Orcamento[]>([]);
 

@@ -8,10 +8,10 @@ export class VendasService {
   private http = inject(HttpClient);
 
   listar(): Observable<any[]> {
-    return this.http.get<any[]>(`${(window as any).__env?.API_URL || 'http://localhost:3000/api'}/vendas`);
+    return this.http.get<any[]>(`${(window as any).__env?.apiUrl}/vendas`);
   }
 
   confirmarVenda(orcamentoId: number) {
-    return this.http.post(`${(window as any).__env?.API_URL || 'http://localhost:3000/api'}/vendas/${orcamentoId}/confirmar`, {});
+    return this.http.post(`${(window as any).__env?.apiUrl}/vendas/${orcamentoId}/confirmar`, {});
   }
 }

@@ -20,7 +20,7 @@ export interface CategoriaTotal {
 export class FinanceiroService {
 
   private http = inject(HttpClient);
-  private baseUrl = (window as any).__env?.API_URL || 'http://localhost:3000/api';
+  private baseUrl = (window as any).__env?.apiUrl;
 
   // Signals para estado local (opcional)
   lancamentosSignal = signal<Lancamento[]>([]);
